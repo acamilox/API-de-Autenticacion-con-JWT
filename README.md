@@ -1,19 +1,17 @@
-# API de Autenticación con JWT
+# API de Autenticacion con JWT
 
-FastAPI + PostgreSQL + JWT + Docker
+API con FastAPI, PostgreSQL, JWT y Docker.
 
 ## Endpoints
 
-- `POST /auth/register` — Registro de usuario
-- `POST /auth/login` — Inicio de sesión (retorna JWT)
-- `GET /users/me` — Obtener perfil del usuario autenticado
-- `GET /admin/users` — Listar usuarios (solo admin)
+| Metodo | Ruta            | Descripcion                     |
+|--------|-----------------|---------------------------------|
+| POST   | /auth/register  | Registrar un usuario nuevo      |
+| POST   | /auth/login     | Iniciar sesion (devuelve token) |
+| GET    | /users/me       | Ver perfil del usuario logueado |
+| GET    | /admin/users    | Listar usuarios (solo admin)    |
 
-## Requisitos
-
-- Docker y Docker Compose
-
-## Instalación
+## Como usar
 
 ```bash
 git clone <repo-url>
@@ -22,4 +20,4 @@ cp .env.example .env
 docker-compose up --build
 ```
 
-Documentación: `http://localhost:8000/docs`
+Docs en http://localhost:8000/docs
