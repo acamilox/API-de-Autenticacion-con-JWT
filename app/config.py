@@ -6,6 +6,10 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
+    @property
+    def is_using_default_secret(self) -> bool:
+        return self.SECRET_KEY == "cambia_esta_clave_por_una_segura"
+
     class Config:
         env_file = ".env"
 

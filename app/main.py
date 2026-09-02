@@ -4,15 +4,23 @@ from sqlalchemy.orm import Session
 from typing import List
 
 from . import models, schemas, crud, security, dependencies
-from .database import engine, get_db, Base
-
-Base.metadata.create_all(bind=engine)
+from .config import settings
+from .database import get_db
 
 app = FastAPI(
     title="Auth API",
     description="API de autenticacion con JWT",
     version="1.0.0",
 )
+
+
+@app.on_event("startup")
+def validate_secret_key():
+    if settings.is_using_default_secret:
+        raise RuntimeError(
+            "SECRET_KEY tiene el valor por defecto. "
+            "Define una clave segura en la variable de entorno SECRET_KEY."
+        )
 
 
 @app.get("/")
